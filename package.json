@@ -1,0 +1,13 @@
+{
+  "name": "420beans",
+  "version": "1.0.0",
+  "description": "420 Beans - Specialty Coffee Shop",
+  "private": true,
+  "dependencies": {
+    "stripe": "^14.21.0",
+    "@sendgrid/mail": "^8.1.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
