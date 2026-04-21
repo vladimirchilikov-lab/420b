@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Плащането е отказано — 420 Beans | Payment Cancelled</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root { --cream:#F5F0E8; --ink:#1A1512; --warm:#C8A97A; --ash:#9A9088; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--cream); color:var(--ink); font-family:'DM Mono',monospace; font-weight:300; min-height:100vh; display:flex; flex-direction:column; }
+  nav { padding:28px 48px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(26,21,18,0.08); }
+  .nav-logo { font-family:'Playfair Display',serif; font-weight:900; font-size:1.1rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--ink); text-decoration:none; }
+  .nav-logo span { color:var(--warm); }
+  main { flex:1; display:flex; align-items:center; justify-content:center; padding:80px 24px; }
+  .cancel-box { max-width:560px; width:100%; text-align:center; }
+  .x-circle { width:80px; height:80px; border-radius:50%; background:rgba(26,21,18,0.08); color:var(--ash); display:flex; align-items:center; justify-content:center; margin:0 auto 40px; font-size:1.8rem; }
+  .eyebrow { font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--ash); margin-bottom:20px; }
+  h1 { font-family:'Playfair Display',serif; font-size:clamp(2rem,4vw,3.5rem); font-weight:900; line-height:1; letter-spacing:-0.02em; margin-bottom:24px; }
+  .desc { font-size:0.82rem; line-height:1.8; color:var(--ash); max-width:400px; margin:0 auto 48px; }
+  .actions { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+  .btn-primary { background:var(--ink); color:var(--cream); border:none; padding:16px 40px; font-family:'DM Mono',monospace; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; cursor:pointer; text-decoration:none; display:inline-block; transition:background 0.2s; }
+  .btn-primary:hover { background:var(--warm); color:var(--ink); }
+  footer { padding:32px 48px; text-align:center; border-top:1px solid rgba(26,21,18,0.08); }
+  .footer-copy { font-size:0.6rem; color:rgba(26,21,18,0.3); letter-spacing:0.12em; }
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo">420 <span>Beans</span></a>
+</nav>
+<main>
+  <div class="cancel-box">
+    <div class="x-circle">✕</div>
+    <p class="eyebrow">Payment Cancelled / Плащането е отказано</p>
+    <h1 id="heading">No worries.</h1>
+    <p class="desc" id="desc">Your payment was cancelled. Your cart is still saved — head back and complete your order whenever you're ready.</p>
+    <div class="actions">
+      <a href="/" class="btn-primary" id="cartBtn">Back to Shop</a>
+    </div>
+  </div>
+</main>
+<footer>
+  <p class="footer-copy">© 2024 420 Beans. All rights reserved.</p>
+</footer>
+<script>
+  const userLang = navigator.language?.startsWith('bg') ? 'bg' : 'en';
+  if (userLang === 'bg') {
+    document.getElementById('heading').textContent = 'Няма проблем.';
+    document.getElementById('desc').textContent = 'Плащането беше отказано. Вашата количка все още е запазена — върнете се и завършете поръчката, когато сте готови.';
+    document.getElementById('cartBtn').textContent = 'Обратно в магазина';
+    document.title = 'Плащането е отказано — 420 Beans';
+  }
+</script>
+</body>
+</html>
