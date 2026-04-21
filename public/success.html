@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Успешна поръчка — 420 Beans | Order Confirmed</title>
+<meta name="description" content="Your 420 Beans order was placed successfully.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root { --cream:#F5F0E8; --ink:#1A1512; --warm:#C8A97A; --ash:#9A9088; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--cream); color:var(--ink); font-family:'DM Mono',monospace; font-weight:300; min-height:100vh; display:flex; flex-direction:column; }
+  nav { padding:28px 48px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(26,21,18,0.08); }
+  .nav-logo { font-family:'Playfair Display',serif; font-weight:900; font-size:1.1rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--ink); text-decoration:none; }
+  .nav-logo span { color:var(--warm); }
+  main { flex:1; display:flex; align-items:center; justify-content:center; padding:80px 24px; }
+  .success-box { max-width:580px; width:100%; text-align:center; }
+  .check-circle {
+    width:80px; height:80px; border-radius:50%;
+    background:var(--ink); color:var(--cream);
+    display:flex; align-items:center; justify-content:center;
+    margin:0 auto 40px;
+    font-size:2rem;
+    animation: popIn 0.6s cubic-bezier(.34,1.56,.64,1) forwards;
+  }
+  @keyframes popIn { from { transform:scale(0); opacity:0; } to { transform:scale(1); opacity:1; } }
+  .eyebrow { font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--warm); margin-bottom:20px; }
+  h1 { font-family:'Playfair Display',serif; font-size:clamp(2.5rem,5vw,4rem); font-weight:900; line-height:0.95; letter-spacing:-0.02em; margin-bottom:24px; }
+  h1 em { font-style:italic; color:var(--warm); }
+  .desc { font-size:0.82rem; line-height:1.8; color:var(--ash); max-width:420px; margin:0 auto 48px; }
+  .order-ref { display:inline-block; background:var(--ink); color:var(--cream); padding:10px 24px; font-size:0.65rem; letter-spacing:0.25em; text-transform:uppercase; margin-bottom:48px; }
+  .actions { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+  .btn-primary { background:var(--ink); color:var(--cream); border:none; padding:16px 40px; font-family:'DM Mono',monospace; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; cursor:pointer; text-decoration:none; display:inline-block; transition:background 0.2s; }
+  .btn-primary:hover { background:var(--warm); color:var(--ink); }
+  .btn-ghost { font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--ash); background:none; border:1px solid rgba(26,21,18,0.2); padding:16px 32px; cursor:pointer; text-decoration:none; display:inline-block; transition:color 0.2s, border-color 0.2s; }
+  .btn-ghost:hover { color:var(--ink); border-color:var(--ink); }
+  footer { padding:32px 48px; text-align:center; border-top:1px solid rgba(26,21,18,0.08); }
+  .footer-copy { font-size:0.6rem; color:rgba(26,21,18,0.3); letter-spacing:0.12em; }
+  @media (max-width:600px) { nav { padding:20px; } }
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo">420 <span>Beans</span></a>
+</nav>
+<main>
+  <div class="success-box">
+    <div class="check-circle">✓</div>
+    <p class="eyebrow" id="eyebrow">Order Confirmed / Поръчката е потвърдена</p>
+    <h1 id="heading">Thank <em>you!</em></h1>
+    <p class="desc" id="desc">Your order has been placed successfully. You'll receive a confirmation email shortly with your order details and delivery information.</p>
+    <div class="order-ref" id="orderRef">Loading order details...</div>
+    <div class="actions">
+      <a href="/" class="btn-primary" id="shopBtn">Continue Shopping</a>
+      <a href="/" class="btn-ghost" id="homeBtn">← Back to Home</a>
+    </div>
+  </div>
+</main>
+<footer>
+  <p class="footer-copy">© 2024 420 Beans. All rights reserved.</p>
+</footer>
+<script>
+  // Read session_id from URL
+  const params = new URLSearchParams(window.location.search);
+  const sessionId = params.get('session_id');
+  if (sessionId) {
+    document.getElementById('orderRef').textContent = 'Order #' + sessionId.slice(-10).toUpperCase();
+  } else {
+    document.getElementById('orderRef').textContent = 'Order Confirmed';
+  }
+
+  // Detect browser language for display
+  const userLang = navigator.language?.startsWith('bg') ? 'bg' : 'en';
+  if (userLang === 'bg') {
+    document.getElementById('heading').innerHTML = 'Благодарим <em>ви!</em>';
+    document.getElementById('desc').textContent = 'Поръчката ви е приета успешно. Ще получите имейл с потвърждение и информация за доставката.';
+    document.getElementById('shopBtn').textContent = 'Продължи пазаруването';
+    document.getElementById('homeBtn').textContent = '← Начало';
+    document.title = 'Успешна поръчка — 420 Beans';
+  }
+</script>
+</body>
+</html>
